@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import '../App.css';
 
 
 class App extends Component{
@@ -11,9 +12,7 @@ render(){
             <div className="form-inline">
                 <div className="form-group">
                     <input className="form-control"
-                    placeholder="I have to..."
-                    />
-
+                    placeholder="I have to..." />
                 </div>
                 <button
                 type="button"
