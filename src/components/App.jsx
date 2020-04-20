@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
 import '../App.css';
+import { connect } from 'react-redux';
+import {bindActionCreators } from 'redux';
+import { addReminder } from '../actions';
+
 
 
 class App extends Component{
@@ -10,7 +14,10 @@ class App extends Component{
          }
     }
 
-
+addReminder()
+{
+    console.log('this.state', this.state);
+}
 render(){
     return(
         <div className="App">
@@ -25,11 +32,18 @@ render(){
                 </div>
                 <button
                 type="button"
-                className="btn btn-success">Add Reminder</button>
+                className="btn btn-success"
+                onClick={()=>this.addReminder()}>Add Reminder</button>
             </div>
         </div>
 
     )
 }
 }
-export default App;
+//bind addremind to this application
+
+function mapDispatchToProps(dispatch)
+{
+    return bindActionCreators({addReminder},dispatch);
+}
+export default connect(null,mapDispatchToProps)(App);
