@@ -41,4 +41,11 @@ render(){
 }
 //bind addremind to this application
 
-export default connect(null,{addReminder})(App);
+function mapStateToProps(state)
+{
+    return{
+        reminders: state
+    }
+}
+
+export default connect(mapStateToProps,{addReminder})(App);
