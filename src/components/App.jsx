@@ -3,6 +3,14 @@ import '../App.css';
 
 
 class App extends Component{
+    constructor(props){
+        super(props);
+        this.state ={
+            text:''
+         }
+    }
+
+
 render(){
     return(
         <div className="App">
@@ -12,7 +20,8 @@ render(){
             <div className="form-inline">
                 <div className="form-group">
                     <input className="form-control"
-                    placeholder="I have to..." />
+                    placeholder="I have to..." 
+                    onChange={event =>this.setState({text: event.target.value})}/>
                 </div>
                 <button
                 type="button"
