@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { addReminder } from '../actions';
+import { addReminder, deleteReminder } from '../actions';
 
 
 
@@ -17,6 +17,12 @@ addReminder()
     this.props.addReminder(this.state.text);
 }
 
+deleteReminder(id)
+{
+    this.props.deleteReminder(id);
+}
+
+
 renderReminders(){
     const { reminders }= this.props
     return(
@@ -26,8 +32,12 @@ renderReminders(){
                     {
                         return(
                             <li key={reminder.id} className="list-group-item">
-                                <div>
+                                <div className="list-item">
                                     {reminder.text}
+                                </div>
+                                <div className="list-item delete-button"
+                                onClick={()=>this.deleteReminder(reminder.id)}>
+                                   &#x2715;
                                 </div>
                             </li>
                         );
@@ -69,4 +79,4 @@ function mapStateToProps(state)
     }
 }
 
-export default connect(mapStateToProps,{addReminder})(App);
+export default connect(mapStateToProps,{addReminder, deleteReminder})(App);
